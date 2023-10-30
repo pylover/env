@@ -1,0 +1,89 @@
+[global_config]
+[keybindings]
+  go_up = <Alt>k
+  go_down = <Alt>j
+  go_left = <Alt>h
+  go_right = <Alt>l
+  close_term = None
+  close_window = None
+  resize_up = <Primary><Shift>k
+  resize_down = <Primary><Shift>j
+  resize_left = <Primary><Shift>h
+  resize_right = <Primary><Shift>l
+  switch_to_tab_1 = <Alt>1
+  switch_to_tab_2 = <Alt>2
+  switch_to_tab_3 = <Alt>3
+  switch_to_tab_4 = <Alt>4
+  switch_to_tab_5 = <Alt>5
+  switch_to_tab_6 = <Alt>6
+  switch_to_tab_7 = <Alt>7
+  switch_to_tab_8 = <Alt>8
+  switch_to_tab_9 = <Alt>9
+  switch_to_tab_10 = <Alt>0
+  broadcast_off = None
+  broadcast_group = None
+  broadcast_all = None
+  layout_launcher = None
+  help = None
+[profiles]
+  [[default]]
+    cursor_color = "#aaaaaa"
+    font = Monospace 11
+    show_titlebar = False
+    scrollbar_position = hidden
+    login_shell = True
+    use_custom_command = True
+    custom_command = cd ~; $SHELL
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      profile = default
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+  [[meloop]]
+    [[[child0]]]
+      type = Window
+      parent = ""
+      order = 0
+      position = 0:0
+      maximised = False
+      fullscreen = True
+      size = 1920, 1080
+      title = vahid@vahid-zenbook: ~/workspace/meloop
+      last_active_term = 55a30164-ccfe-49b0-84cd-272d811c5933
+      last_active_window = True
+    [[[child1]]]
+      type = VPaned
+      parent = child0
+      order = 0
+      position = 738
+      ratio = 0.6865116279069767
+    [[[terminal2]]]
+      type = Terminal
+      parent = child1
+      order = 0
+      profile = default
+      uuid = 55a30164-ccfe-49b0-84cd-272d811c5933
+    [[[child3]]]
+      type = HPaned
+      parent = child1
+      order = 1
+      position = 958
+      ratio = 0.5002610966057441
+    [[[terminal4]]]
+      type = Terminal
+      parent = child3
+      order = 0
+      profile = default
+      uuid = b540f9a2-b9ed-40ea-97e7-cdf209532f73
+      directory = ""
+    [[[terminal5]]]
+      type = Terminal
+      parent = child3
+      order = 1
+      profile = default
+      uuid = 00a886d8-e638-43eb-8259-5e2e37721a1d
+[plugins]
