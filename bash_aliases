@@ -6,5 +6,5 @@ alias grep="grep --color=always $@"
 alias open="xdg-open $@"
 
 # Wireguard
-alias wgon="/usr/loca/bin/wgctl up"
-alias wgoff="/usr/loca/bin/wgctl down"
+alias wgon="/usr/local/bin/wgctl up"
+alias wgoff="/usr/local/bin/wgctl down"
