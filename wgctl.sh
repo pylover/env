@@ -2,6 +2,8 @@
 
 TUN=$1
 CMD=$2
+GW=$(ip route | head -n 1 | cut -d' ' -f3)
+declare -a EXEMPTIONS=()
 
 
 usage() {
@@ -25,10 +27,16 @@ fi
 
 if [ "$CMD" == "up" ]; then
   echo "Bringing up WireGuard connection"
+  for i in "${EXEMPTIONS[@]}"; do
+    ip route replace ${i} via ${GW}
+  done
   sudo wg-quick up ${TUN}
 elif [ "$CMD" == "down" ]; then
   echo "Turning off WireGuard connection"
   sudo wg-quick down ${TUN}
+  for i in "${EXEMPTIONS[@]}"; do
+    ip route del ${i} via ${GW}
+  done
 else
   usage
   exit 1
