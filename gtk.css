@@ -5,6 +5,13 @@ You can temporarily disable this custom CSS by clicking on the “Pause” butto
 Changes are applied instantly and globally, for the whole application.
 */
 
+headerbar {
+  background: #202124;
+  border-color: #202124;
+  box-shadow: 0 1px #202124 inset;
+  color: #aaaaaa;
+}
+
 .terminator-terminal-window notebook stack,
 .terminator-terminal-window notebook {
   border: 0px;
