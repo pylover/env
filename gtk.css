@@ -12,6 +12,10 @@ headerbar {
   color: #aaaaaa;
 }
 
+headerbar:backdrop {
+  color: #999999;
+}
+
 .terminator-terminal-window notebook stack,
 .terminator-terminal-window notebook {
   border: 0px;
