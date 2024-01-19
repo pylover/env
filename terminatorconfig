@@ -1,5 +1,6 @@
 [global_config]
 [keybindings]
+  preferences_keybindings = ""
   go_up = <Alt>k
   go_down = <Alt>j
   go_left = <Alt>h
