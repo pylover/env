@@ -71,6 +71,13 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   linkfile "${ENV}/vimrc" "${HOME}/.vimrc"
 fi
 
+# default editor
+read -p "Do you want to set vim as the default editor? [N/y] " 
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  echo 'export EDITOR=/usr/bin/vim' | sudo tee /etc/profile.d/editor.sh \
+  > /dev/null
+fi
+
 # ssh
 read -p "Do you want to update the SSH config? [N/y] " 
 if [[ $REPLY =~ ^[Yy]$ ]]; then
