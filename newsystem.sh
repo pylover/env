@@ -56,8 +56,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 fi
 
 
-
-
 # bash
 read -p "Do you want to update the .bash_aliases? [N/y] " 
 if [[ $REPLY =~ ^[Yy]$ ]]; then
