@@ -293,9 +293,9 @@ highlight CursorLineNr ctermbg=0 ctermfg=6
 " let g:pymode_breakpoint = 1
 " let g:pymode_breakpoint_bind = '<leader>b'
 let g:pymode_breakpoint_cmd = 'from pudb import set_trace; set_trace()'
-let g:pymode_python = '$HOME/.vim/pyenv/python3'
+let g:pymode_python = 'python3'
 let g:pymode_virtualenv = 1
-let g:pymode_virtualenv_path = '$HOME/.vim/pyenv'
+let g:pymode_virtualenv_path = $HOME . '/.vim/pyenv'
 
 " Bash aliases
 "set shellcmdflag=-ic
