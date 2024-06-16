@@ -4,7 +4,7 @@ ENV=`dirname "$(readlink -f "$BASH_SOURCE")"`
 LN="ln -fs"
 
 # Install some useful packages
-sudo apt install curl git screen bmon python3-full
+sudo apt install -y curl git screen bmon python3-full xclip
 
 
 read -p "Do you want disable user-tracker, apport and some background tasks? [N/y] " 
