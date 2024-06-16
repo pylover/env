@@ -63,9 +63,11 @@ set nopaste
 " Using system's clipboard
 set clipboard=unnamed
 
+
 " Spell checking
 setlocal spell spelllang=en_us
 set nospell
+
 
 " split and navigation
 set splitbelow
@@ -104,7 +106,7 @@ au BufNewFile,BufRead *.py
 
 " c
 set cindent
-au BufRead,BufNewFile *.c,*.h,*.in
+au BufRead,BufNewFile *.c,*.h,*.in,*.cpp,*.ino
     \ setlocal tabstop=4 |
     \ setlocal softtabstop=4 |
     \ setlocal shiftwidth=4 |
@@ -391,14 +393,15 @@ let g:prettier#quickfix_enabled = 0
 let g:prettier#autoformat_require_pragma = 0
 au BufWritePre *.css,*.svelte,*.pcss,*.html,*.ts,*.js,*.json PrettierAsync
 
+
+" Remove trailing whitespaces
 fun! TrimWhitespace()
     let l:save = winsaveview()
     keeppatterns %s/\s\+$//e
     call winrestview(l:save)
 endfun
+autocmd BufWritePre *.c,*.ino,*.cpp,*.h,*.py call TrimWhitespace()
 
-" Remove trailing whitespaces
-autocmd BufWritePre *.c,*.h,*.py call TrimWhitespace()
 
 " Editor command aliases:
 " cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W'))
