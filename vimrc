@@ -7,6 +7,7 @@ filetype off                  " required
 call plug#begin('~/.vim/plugged')
 " Specify a directory for plugins call plug#begin('~/.vim/plugged')
 
+Plug 'pylover/c-syntax.vim'
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'tmhedberg/SimpylFold'
 Plug 'vim-scripts/indentpython.vim'
@@ -54,7 +55,10 @@ filetype plugin indent on    " required
 " o       Automatically insert the current comment leader after hitting 'o' or
 "         'O' in Normal mode.
 " https://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
-autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
+autocmd BufNewFile,BufRead * setlocal fo-=t fo-=c fo-=-r fo-=o fo-=q fo-=l
+set fo-=t fo-=c fo-=-r fo-=o fo-=q fo-=l
+set nopaste
+
 
 " Using system's clipboard
 set clipboard=unnamed
