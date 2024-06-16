@@ -11,7 +11,6 @@ Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'tmhedberg/SimpylFold'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'python-rope/ropevim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'plasticboy/vim-markdown'
 Plug 'mgedmin/coverage-highlight.vim'
@@ -283,36 +282,14 @@ set cursorline
 highlight CursorLineNr ctermbg=0 ctermfg=6
 
 " python-mode
-" let g:pymode_virtualenv = 1
-" let g:pymode_virtualenv_path = $VIRTUAL_ENV
 " let g:pymode_run = 1
 " let g:pymode_run_bind = '<leader>r'
 " let g:pymode_breakpoint = 1
 " let g:pymode_breakpoint_bind = '<leader>b'
-" let g:pymode_python = 'python'
 let g:pymode_breakpoint_cmd = 'from pudb import set_trace; set_trace()'
-let g:pymode_python = 'python3'
-
-" Rope
-let g:pymode_rope = 1
-
-"change parameters to open go to definition in vertical splited window
-"possible parameters are 'e', 'new', 'vnew
-let g:pymode_rope_goto_definition_cmd = 'new'
-let g:pymode_rope_organize_imports_bind = '<Leader>q'
-let g:pymode_rope_lookup_project = 0
-let g:pymode_rope_completion = 1
-let g:pymode_rope_complete_on_dot = 0
-let g:pymode_rope_autoimport = 1
-let g:pymode_rope_rename_bind = '<C-c>rr'
-let g:pymode_rope = 0
-let g:pymode_rope_regenerate_on_write = 0
-
-set completeopt=longest,menuone
-let ropevim_vim_completion = 1
-let ropevim_extended_complete = 1
-map <C-]> <C-C>g
-map <Leader>i <C-c>ro
+let g:pymode_python = '$HOME/.vim/pyenv/python3'
+let g:pymode_virtualenv = 1
+let g:pymode_virtualenv_path = '$HOME/.vim/pyenv'
 
 " Bash aliases
 "set shellcmdflag=-ic
