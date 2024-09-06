@@ -7,19 +7,22 @@ LN="ln -fs"
 sudo apt install -y curl git screen bmon python3-full xclip
 
 
-read -p "Do you want disable apport? [N/y] " 
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-    sudo systemctl disable apport.service
-    systemctl mask apport.service
-fi
-
-
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   echo "Platform: $OSTYPE"
 elif [[ "$OSTYPE" == "freebsd"* ]]; then
-  echo "Platform: I Love $OSTYPE"
+  echo "Platform: I Love $OSTYPE but,"
+  echo "Operating system $OSTYPE is not supported!"
+  exit 1
 else
   echo "Operating system $OSTYPE is not supported!"
+  exit 1
+fi
+
+
+read -p "Do you want disable apport? [N/y] " 
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    sudo systemctl disable apport.service
+    sudo systemctl mask apport.service
 fi
 
 
@@ -28,7 +31,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     tracker reset --hard
     sudo systemctl disable tracker-{miner-apps,miner-fs,miner-rss,store,extract,writeback}
     systemctl --user mask tracker-{miner-apps,miner-fs,miner-rss,store,extract,writeback}
-    sudo apt-mark hold tracker-{miner-apps,miner-fs,miner-rss,store,extract,writeback}
+    sudo apt-mark hold tracker-{miner-fs,extract}
 
     sudo chmod -x /usr/libexec/tracker-miner-fs-3
     sudo chmod -x /usr/libexec/tracker-extract-3
