@@ -7,30 +7,36 @@ LN="ln -fs"
 sudo apt install -y curl git screen bmon python3-full xclip
 
 
+read -p "Do you want disable apport? [N/y] " 
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    sudo systemctl disable apport.service
+    systemctl mask apport.service
+fi
+
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  echo "Platform: $OSTYPE"
+elif [[ "$OSTYPE" == "freebsd"* ]]; then
+  echo "Platform: I Love $OSTYPE"
+else
+  echo "Operating system $OSTYPE is not supported!"
+fi
+
+
 read -p "Do you want disable user-tracker, apport and some background tasks? [N/y] " 
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    echo "Platform: $OSTYPE"
-    systemctl --user mask tracker-store.service tracker-miner-fs.service \
-  	tracker-miner-rss.service tracker-extract.service \
-  	tracker-miner-apps.service tracker-writeback.service
-  
-    sudo apt purge apport* whoopsie*
-    sudo apt-mark hold tracker
-    sudo apt-mark hold tracker-extract
-    sudo apt-mark hold tracker-miner-fs
+    tracker reset --hard
+    sudo systemctl disable tracker-{miner-apps,miner-fs,miner-rss,store,extract,writeback}
+    systemctl --user mask tracker-{miner-apps,miner-fs,miner-rss,store,extract,writeback}
+    sudo apt-mark hold tracker-{miner-apps,miner-fs,miner-rss,store,extract,writeback}
+
     sudo chmod -x /usr/libexec/tracker-miner-fs-3
     sudo chmod -x /usr/libexec/tracker-extract-3
 
     tracker3 reset --filesystem --rss # Clean all database
     tracker3 daemon --terminate
-
-  elif [[ "$OSTYPE" == "freebsd"* ]]; then
-    echo "Platform: I Love $OSTYPE"
-  else
-    echo "Operating system $OSTYPE is not supprted!"
-  fi
 fi
+
 
 function linkfile {
 	if [ -f $2 ]; then 
