@@ -40,23 +40,6 @@ call plug#end()
 syntax on
 filetype plugin indent on    " required
 
-" You can use the 'formatoptions' option  to influence how Vim formats text.
-" 'formatoptions' is a string that can contain any of the letters below.  The
-" default setting is "tcq".  You can separate the option letters with commas for
-" readability.
-" 
-" letter  meaning when present in 'formatoptions'
-" 
-" t       Auto-wrap text using textwidth
-" c       Auto-wrap comments using textwidth, inserting the current comment
-"         leader automatically.
-" r       Automatically insert the current comment leader after hitting
-"         <Enter> in Insert mode.
-" o       Automatically insert the current comment leader after hitting 'o' or
-"         'O' in Normal mode.
-" https://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
-autocmd BufNewFile,BufRead * setlocal fo-=t fo-=c fo-=-r fo-=o fo-=q fo-=l
-set fo-=t fo-=c fo-=-r fo-=o fo-=q fo-=l
 set nopaste
 
 
@@ -117,7 +100,7 @@ au BufRead,BufNewFile *.c,*.h,*.in,*.cpp,*.ino
 
 " yml
 au BufReadPost *.yml set syntax=yaml
-au BufNewFile,BufRead *.yml,*.yaml
+au BufNewFile,BufRead *.yml,*.yaml, *.cmake, *.txt
     \ setlocal tabstop=2 |
     \ setlocal softtabstop=2 |
     \ setlocal shiftwidth=2 |
@@ -140,7 +123,7 @@ augroup END
 
 " js, css , HTML, Markdown
 au BufReadPost *.mak set syntax=html
-au BufNewFile,BufRead *.md,*.js,*.json,*.html,*.css,*.vue,*.svelte
+au BufNewFile,BufRead *.md,*.js,*.json,*.html,*.svg,*.mako,*.css,*.vue,*.svelte
     \ setlocal tabstop=2 |
     \ setlocal softtabstop=2 |
     \ setlocal shiftwidth=2 |
@@ -181,7 +164,7 @@ let g:haskell_backpack = 1                " to enable highlighting of backpack k
 let g:haskell_classic_highlighting = 0
 
 " Other (miscellaneous)
-au BufRead,BufNewFile *.txt,*.rst
+au BufRead,BufNewFile *.rst
     \ setlocal tabstop=4 |
     \ setlocal softtabstop=4 |
     \ setlocal shiftwidth=4 |
@@ -377,9 +360,28 @@ let @c = '0fC5xi/* lf"d$a */€ýa'
 " Using local config. Uncomment line below. 
 "source ~/.vimrc-local
 
+
+" You can use the 'formatoptions' option  to influence how Vim formats text.
+" 'formatoptions' is a string that can contain any of the letters below.  The
+" default setting is "tcq".  You can separate the option letters with commas for
+" readability.
+" 
+" letter  meaning when present in 'formatoptions'
+" 
+" t       Auto-wrap text using textwidth
+" c       Auto-wrap comments using textwidth, inserting the current comment
+"         leader automatically.
+" r       Automatically insert the current comment leader after hitting
+"         <Enter> in Insert mode.
+" o       Automatically insert the current comment leader after hitting 'o' or
+"         'O' in Normal mode.
+" https://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
+" autocmd BufNewFile,BufRead * setlocal fo-=t fo-=c fo-=-r fo-=o fo-=q fo-=l
+" set fo-=t fo-=c fo-=-r fo-=o fo-=q fo-=l
+
 " https://stackoverflow.com/questions/19320747/prevent-vim-from-indenting-line-when-typing-a-colon-in-python
-autocmd FileType python setlocal indentkeys-=<:>
-autocmd FileType python setlocal indentkeys-=:
+" autocmd FileType python setlocal indentkeys-=<:>
+" autocmd FileType python setlocal indentkeys-=:
 
 let g:pymode_lint = 0
 
