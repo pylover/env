@@ -4,7 +4,7 @@ ENV=`dirname "$(readlink -f "$BASH_SOURCE")"`
 LN="ln -fs"
 
 # Install some useful packages
-sudo apt install -y curl git screen bmon python3-full xclip
+sudo apt install -y vim terminator curl git screen bmon python3-full xclip
 
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -95,6 +95,12 @@ read -p "Do you want to update the SSH config? [N/y] "
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   mkdir -p "${HOME}/.ssh/sshcontrolmasters"
   linkfile "${ENV}/sshconfig" "${HOME}/.ssh/config"
+fi
+
+read -p "Do you want to install proxy-ssh and vpn-ssh commands? [N/y] " 
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  sudo ln -s "${ENV}/proxy-ssh.sh" "/usr/local/bin/proxy-ssh"
+  sudo ln -s "${ENV}/vpn-ssh.sh" "/usr/local/bin/vpn-ssh"
 fi
 
 # terminator
